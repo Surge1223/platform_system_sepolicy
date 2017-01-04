@@ -118,6 +118,10 @@ allow zygote tmpfs:chr_file r_file_perms;
 get_prop(zygote, overlay_prop)
 get_prop(zygote, exported_overlay_prop)
 
+# Themes
+allow zygote theme_data_file:file r_file_perms;
+allow zygote theme_data_file:dir r_dir_perms;
+
 ###
 ### neverallow rules
 ###
