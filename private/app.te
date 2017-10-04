@@ -425,7 +425,7 @@ neverallow appdomain exec_type:file
 # This is the default type for anything under /data not otherwise
 # specified in file_contexts.  Define a different type for portions
 # that should be writable by apps.
-neverallow appdomain system_data_file:dir_file_class_set
+neverallow { appdomain -interfacer } system_data_file:dir_file_class_set
     { create write setattr relabelfrom relabelto append unlink link rename };
 
 # Write to various other parts of /data.
@@ -508,6 +508,10 @@ neverallow {
   -system_data_file # shared libs in apks
   -apk_data_file
 }:file no_x_file_perms;
+
+# Themed resources (i.e. composed icons)
+allow appdomain theme_data_file:dir r_dir_perms;
+allow appdomain theme_data_file:file r_file_perms;
 
 # Applications should use the activity model for receiving events
 neverallow {

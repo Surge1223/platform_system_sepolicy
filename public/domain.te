@@ -744,6 +744,7 @@ neverallow {
   -init # TODO: limit init to relabelfrom for files
   -zygote
   -installd
+  -interfacer
   -postinstall_dexopt
   -cppreopts
   -dex2oat
@@ -858,6 +859,7 @@ neverallow {
   -system_server
   -system_app
   -init
+  -interfacer
   -installd # for relabelfrom and unlink, check for this in explicit neverallow
   with_asan(`-asan_extract')
 } system_data_file:file no_w_file_perms;
