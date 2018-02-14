@@ -395,7 +395,9 @@
 /data/bootchart(/.*)?		u:object_r:bootchart_data_file:s0
 
 #############################
-# Expanded data files
+
+# Themes data# Expanded data files
+/data/system/theme(/.*)?    u:object_r:theme_data_file:s0
 #
 /mnt/expand(/.*)?                                   u:object_r:mnt_expand_file:s0
 /mnt/expand/[^/]+(/.*)?                             u:object_r:system_data_file:s0
