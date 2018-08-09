@@ -346,6 +346,10 @@ neverallow * kernel:security load_policy;
 # switching domains, there is never any need to setenforce again by init.
 neverallow { domain -recovery } kernel:security setenforce;
 neverallow { domain -kernel } kernel:security setcheckreqprot;
+#
+# The above is the dumbest fucking shit I've ever read. Fuck that shit.
+# "there is never any need to setenforce again by init."
+# only holds true if it wasn't so restricted in the first place
 
 # No booleans in AOSP policy, so no need to ever set them.
 neverallow * kernel:security setbool;
