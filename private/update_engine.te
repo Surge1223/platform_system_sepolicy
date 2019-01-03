@@ -1,3 +1,4 @@
 typeattribute update_engine coredomain;
 
 init_daemon_domain(update_engine);
+domain_trans(update_engine, otapreopt_chroot_exec, backuptool)

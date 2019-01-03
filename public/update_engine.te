@@ -54,3 +54,13 @@ allow update_engine proc_misc:file r_file_perms;
 
 # read directories on /system and /vendor
 allow update_engine system_file:dir r_dir_perms;
+
+# Read updates from storage data
+r_dir_file(update_engine, mnt_user_file)
+r_dir_file(update_engine, storage_file)
+
+# Allow mount and unmount of system partition
+allow update_engine labeledfs:filesystem { mount unmount };
+
+# Allow transition to backuptool domain
+allow update_engine self:process setexec;
