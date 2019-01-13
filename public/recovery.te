@@ -142,6 +142,10 @@ recovery_only(`
   # These are needed to update dynamic partitions in recovery.
   r_dir_file(recovery, sysfs_dm)
   allowxperm recovery super_block_device_type:blk_file ioctl { BLKIOMIN BLKALIGNOFF };
+
+  # Sideload backuptool
+  allow recovery self:process setexec;
+
 ')
 
 ###
