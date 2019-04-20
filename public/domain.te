@@ -531,7 +531,7 @@ neverallow * hidl_base_hwservice:hwservice_manager find;
 
 # Require that domains explicitly label unknown properties, and do not allow
 # anyone but init to modify unknown properties.
-neverallow { domain -init -vendor_init } default_prop:property_service set;
+neverallow { domain -init -vendor_init -recovery } default_prop:property_service set;
 neverallow { domain -init -vendor_init } mmc_prop:property_service set;
 
 compatible_property_only(`
@@ -695,6 +695,7 @@ full_treble_only(`
   neverallow {
     coredomain
     -shell
+    -recovery
     userdebug_or_eng(`-su')
   } vndservice_manager_type:service_manager *;
 ')
