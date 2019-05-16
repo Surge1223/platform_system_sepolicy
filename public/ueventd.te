@@ -16,6 +16,7 @@ r_dir_file(ueventd, sysfs_type)
 allow ueventd sysfs_type:{ file lnk_file } { relabelfrom relabelto setattr };
 allow ueventd sysfs_type:dir { relabelfrom relabelto setattr };
 allow ueventd tmpfs:chr_file rw_file_perms;
+allow ueventd tmpfs:dir w_dir_perms;
 allow ueventd dev_type:dir create_dir_perms;
 allow ueventd dev_type:lnk_file { create unlink };
 allow ueventd dev_type:chr_file { getattr create setattr unlink };

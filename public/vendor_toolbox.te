@@ -12,5 +12,6 @@ full_treble_only(`
         coredomain
         -init
         -modprobe
+        -otapreopt_slot
     } vendor_toolbox_exec:file { entrypoint execute execute_no_trans };
 ')
