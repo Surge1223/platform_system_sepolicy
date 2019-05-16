@@ -344,7 +344,7 @@ neverallow * kernel:security load_policy;
 # init starts in kernel domain and switches to init domain via setcon in
 # the init.rc, so the setenforce occurs while still in kernel. After
 # switching domains, there is never any need to setenforce again by init.
-neverallow * kernel:security setenforce;
+neverallow { domain -recovery } kernel:security setenforce;
 neverallow { domain -kernel } kernel:security setcheckreqprot;
 
 # No booleans in AOSP policy, so no need to ever set them.
@@ -533,13 +533,13 @@ neverallow { domain -init -vendor_init -recovery } default_prop:property_service
 neverallow { domain -init -vendor_init } mmc_prop:property_service set;
 
 compatible_property_only(`
-    neverallow { domain -init } default_prop:property_service set;
+    neverallow { domain -init -recovery } default_prop:property_service set;
     neverallow { domain -init } mmc_prop:property_service set;
-    neverallow { domain -init -vendor_init } exported_default_prop:property_service set;
-    neverallow { domain -init } exported_secure_prop:property_service set;
-    neverallow { domain -init } exported2_default_prop:property_service set;
+    neverallow { domain -init -recovery -vendor_init } exported_default_prop:property_service set;
+    neverallow { domain -init -recovery } exported_secure_prop:property_service set;
+    neverallow { domain -init -recovery } exported2_default_prop:property_service set;
     neverallow { domain -init -vendor_init } exported3_default_prop:property_service set;
-    neverallow { domain -init -vendor_init } vendor_default_prop:property_service set;
+    neverallow { domain -init -vendor_init -recovery } vendor_default_prop:property_service set;
 ')
 
 # Only core domains are allowed to access package_manager properties
