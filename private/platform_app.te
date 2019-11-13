@@ -96,6 +96,9 @@ set_prop(platform_app, test_boot_reason_prop)
 # allow platform apps to create symbolic link
 allow platform_app app_data_file:lnk_file create_file_perms;
 
+# To allow update engine access to service manager
+allow platform_app update_engine_service:service_manager find;
+
 ###
 ### Neverallow rules
 ###

@@ -488,7 +488,7 @@ neverallow * exec_type:dir_file_class_set mounton;
 neverallow { domain -init userdebug_or_eng(`-recovery') } { system_file vendor_file_type }:dir_file_class_set mounton;
 
 # Nothing should be writing to files in the rootfs.
-neverallow * rootfs:file { create write setattr relabelto append unlink link rename };
+neverallow { domain -recovery }  rootfs:file { create write setattr relabelto append unlink link rename };
 
 # Restrict context mounts to specific types marked with
 # the contextmount_type attribute.
@@ -689,6 +689,7 @@ full_treble_only(`
   neverallow {
     coredomain
     -shell
+    -recovery
     userdebug_or_eng(`-su')
     -ueventd # uevent is granted create for this device, but we still neverallow I/O below
   } vndbinder_device:chr_file rw_file_perms;
@@ -700,6 +701,7 @@ full_treble_only(`
   neverallow {
     coredomain
     -shell
+    -recovery
     userdebug_or_eng(`-su')
   } vndservice_manager_type:service_manager *;
 ')
@@ -707,6 +709,7 @@ full_treble_only(`
   neverallow {
     coredomain
     -shell
+    -recovery
     userdebug_or_eng(`-su')
   } vndservicemanager:binder *;
 ')
