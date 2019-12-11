@@ -42,3 +42,9 @@ hal_client_domain(radio, hal_telephony)
 
 # Used by TelephonyManager
 allow radio proc_cmdline:file r_file_perms;
+
+# Allow radio to interact with gpuservice
+allow radio gpuservice:binder call;
+
+# Used by System apps
+allow radio system_app_data_file:dir r_dir_perms;
